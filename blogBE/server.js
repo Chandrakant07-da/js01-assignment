@@ -1,6 +1,13 @@
 const express = require('express');
+const cors = require("cors")
 const app = express();
-
+app.use(
+  express.json(),
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 // Sample list of users
 const users = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },
@@ -14,7 +21,7 @@ app.get('/users', (req, res) => {
 });
 
 // Start the server on port 3000
-const PORT = 3000
+const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
